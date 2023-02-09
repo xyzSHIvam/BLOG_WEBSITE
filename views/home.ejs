@@ -1,0 +1,24 @@
+<%- include("./partials/header.ejs") %>
+<div class="home">
+<h1><%= title %></h1>
+<p><%= content %></p><hr>
+<% posts.forEach(function(n){ %>
+    <form action="/delete" method="POST">
+    <div class="item">
+         <h1>
+            <%= n.titleValue %>
+         </h1>
+         <p>
+            <input type="checkbox" name="checkbox" value="<%= n._id %>" onchange="this.form.submit()">
+            <%= n.contentValue + "...." %>
+            <a href="/posts/<%=n.titleValue%>">more</a>
+         <p>
+            
+    </div>
+    </form>
+    <% }) %>
+    <div class="compose">
+        <a href="/compose">+</a>
+    </div>
+</div>
+<%-include("./partials/footer.ejs") %>
